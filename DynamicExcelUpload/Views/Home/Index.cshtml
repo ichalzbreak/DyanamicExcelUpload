@@ -1,0 +1,38 @@
+﻿@using DynamicExcelUpload.Models;
+@model ExcelModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <div class="card">
+        <h5 class="card-header">Upload Excel</h5>
+        <div class="card-body">
+            <form id="uploadExcel" class="form-horizontal" enctype="multipart/form-data">
+                <div class="form-group row">
+                    <div class="col-sm-12 col-lg-6">
+                        <input asp-for="ExcelFile" class="form-control" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+                        <input asp-for="@Model.FileName" type="hidden"  />
+                        <span id="ExcelFile-error" class="text-danger"></span>
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="button" value="Process" id="btnUpload" name="btnUpload" class="btn btn-primary" />
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="button" value="Download" id="btnDownload" name="btnDownload" class="btn btn-primary" />
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br />
+<div id="tbl">
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}  
